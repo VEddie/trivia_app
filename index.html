@@ -15,10 +15,10 @@
 
                 <div class="settings">
                     <label for="playerName" class="center">Name:</label>
-                    <input type="text" id="playerName" class="center" minlength="2" maxlength="20" />
+                    <input type="text" id="playerName" class="center" minlength="2" maxlength="20" value="Eddie"/>
                 
-                    <label for="questionNumber" class="center">How many questions?</label>
-                    <input type="text" id="questionNumber" class="center" placeholder="Between 5 to 20 questions" />
+                    <label for="questionAmount" class="center">How many questions?</label>
+                    <input type="number" id="questionAmount" class="center" placeholder="Between 5 to 20 questions" value="15"/>
                 
                     <div>
                         <fieldset>
@@ -92,7 +92,7 @@
                 </div>
 
                 <div class="start">
-                    <button>Start Game</button>
+                    <button id="gameStartButton">Start Game</button>
                 </div>
             </div>
 

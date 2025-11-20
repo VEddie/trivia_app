@@ -6,7 +6,7 @@ fieldset {
     border: none;
 }
 
-input[type='text']{
+input[type='text'], input[type='number'] {
     width: 12rem;
     text-align: center;
 }

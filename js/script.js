@@ -1,7 +1,48 @@
-const fetchQuestions = () => {
-    const baseURL = 'https://opentdb.com/api.php?';
-    return fetch(url);
+const baseURL = 'https://opentdb.com/api.php?';
+
+let nameInput = document.getElementById('playerName');
+let amountInput = document.getElementById('questionAmount');
+let difficultyInput = document.getElementsByName('difficulty');
+let categoryInput = document.getElementsByName('category');
+let startButton = document.getElementById('gameStartButton');
+
+let gameData = null;
+
+const fetchQuestions = (gameConfig) => {
+    let questionURL = baseURL 
+                    + `amount=${gameConfig.amount}&`
+                    + `difficulty=${gameConfig.difficulty}&`
+                    + `type=multiple`;
+
+    if(gameConfig.category)
+        questionURL += `&category=${gameConfig.category}`
+
+    console.log(`API URL: ${questionURL}`);
 };
+
+startButton.addEventListener('click', () => {
+    let gameConfig = {
+        name: nameInput.value,
+        amount: amountInput.value,
+        score: 0
+    };
+
+    for(let i = 0; i < difficultyInput.length; i++) 
+        if(difficultyInput[i].checked) {
+            gameConfig.difficulty = difficultyInput[i].value;
+            break;
+        }
+    
+    for(let i = 0; i < categoryInput.length; i++) {
+        if(categoryInput[i].checked) {
+            gameConfig.category = categoryInput[i].value;
+            break;
+        }
+    }
+    
+    fetchQuestions(gameConfig);
+    
+})
 
 // API URL:?amount=val&category=val&difficulty=(easy|medium|hard)&type=multiple
 
