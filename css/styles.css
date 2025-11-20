@@ -1,22 +1,55 @@
+* {
+    box-sizing: border-box;
+}
+
+fieldset {
+    border: none;
+}
+
+input[type='text']{
+    width: 12rem;
+    text-align: center;
+}
 #container {
     display: flex;
     justify-content: center;
+    justify-self: center;
+    border: 2px solid black;
+    width: 60vw;
+}
+
+.center {
     align-self: center;
 }
 
-.screen {
+
+#main_menu {
     display: grid;
+    grid-template-areas: 
+    "header   header"
+    "settings settings"
+    "start    start"
+    ;
+
     justify-items: center;
     align-items: center;
     justify-content: center;
     height: 75vh;
-    width: 50vw;
-    min-width: 50vw;
-    border: 2px solid black;
+}
+
+.header {
+    grid-area: header;
 }
 
 .settings {
+    grid-area: settings;
     display: flex;
     flex-direction: column;
     gap: 10px;
+    min-width: 35vw;
+    background-color: steelblue;
+}
+
+.start {
+    grid-area: start;
 }

@@ -8,22 +8,18 @@
     </head>
     <body>
         <div id="container">
-            <div id="main_menu" class="screen">
+            <div id="main_menu">
                 <div class="header">
                     <p>Trivia App</p>
                 </div>
 
                 <div class="settings">
-                    <div>
-                        <label for="playerName">Name:</label>
-                        <input type="text" id="playerName" minlength="2" maxlength="20" />
-                    </div>
-
-                    <div>
-                        <label for="questionNumber">How many questions?</label>
-                        <input type="text" id="questionNumber" placeholder="Between 5 to 20 questions" />
-                    </div>
-
+                    <label for="playerName" class="center">Name:</label>
+                    <input type="text" id="playerName" class="center" minlength="2" maxlength="20" />
+                
+                    <label for="questionNumber" class="center">How many questions?</label>
+                    <input type="text" id="questionNumber" class="center" placeholder="Between 5 to 20 questions" />
+                
                     <div>
                         <fieldset>
                             <legend>Select a difficulty:</legend>
@@ -94,10 +90,14 @@
                         </fieldset>
                     </div>
                 </div>
-                
-                <div>
+
+                <div class="start">
                     <button>Start Game</button>
                 </div>
+            </div>
+
+            <div>
+                
             </div>
         </div>
 
