@@ -7,19 +7,35 @@
         <title>Trivia App</title>
     </head>
     <body>
-        <div id="container">
+        <div class="container">
             <div id="main_menu">
-                <div class="header">
+                <div class="game_header">
                     <p>Trivia App</p>
                 </div>
 
+                
+                <div class="player">
+                    <label for="playerName">Name:</label>
+                    <input
+                        type="text"
+                        id="playerName"
+                        class="center"
+                        minlength="2"
+                        maxlength="20"
+                        value="Eddie"
+                    />
+    
+                    <label for="questionAmount">How many questions?</label>
+                    <input
+                        type="number"
+                        id="questionAmount"
+                        class="center"
+                        placeholder="Between 5 to 20 questions"
+                        value="15"
+                    />
+                </div>
+    
                 <div class="settings">
-                    <label for="playerName" class="center">Name:</label>
-                    <input type="text" id="playerName" class="center" minlength="2" maxlength="20" value="Eddie"/>
-                
-                    <label for="questionAmount" class="center">How many questions?</label>
-                    <input type="number" id="questionAmount" class="center" placeholder="Between 5 to 20 questions" value="15"/>
-                
                     <div>
                         <fieldset>
                             <legend>Select a difficulty:</legend>
@@ -27,19 +43,19 @@
                                 <input type="radio" id="easy" name="difficulty" value="easy" checked />
                                 <label for="easy">Easy</label>
                             </div>
-
+    
                             <div>
                                 <input type="radio" id="medium" name="difficulty" value="medium" />
                                 <label for="medium">Medium</label>
                             </div>
-
+    
                             <div>
                                 <input type="radio" id="hard" name="difficulty" value="hard" />
                                 <label for="hard">Hard</label>
                             </div>
                         </fieldset>
                     </div>
-
+    
                     <div>
                         <fieldset>
                             <legend>Select categories:</legend>
@@ -47,42 +63,37 @@
                                 <input type="radio" id="all" name="category" value="" checked />
                                 <label for="all">All</label>
                             </div>
-
+    
                             <div>
-                                <input
-                                    type="radio"
-                                    id="general_knowledge"
-                                    name="category"
-                                    value="9"
-                                />
+                                <input type="radio" id="general_knowledge" name="category" value="9" />
                                 <label for="general_knowledge">General Knowledge</label>
                             </div>
-
+    
                             <div>
                                 <input type="radio" id="film" name="category" value="11" />
                                 <label for="film">Film</label>
                             </div>
-
+    
                             <div>
                                 <input type="radio" id="music" name="category" value="12" />
                                 <label for="music">Music</label>
                             </div>
-
+    
                             <div>
                                 <input type="radio" id="video_games" name="category" value="15" />
                                 <label for="video_games">Video Games</label>
                             </div>
-
+    
                             <div>
                                 <input type="radio" id="math" name="category" value="19" />
                                 <label for="math">Mathematics</label>
                             </div>
-
+    
                             <div>
                                 <input type="radio" id="sports" name="category" value="21" />
                                 <label for="sports">Sports</label>
                             </div>
-
+    
                             <div>
                                 <input type="radio" id="animals" name="category" value="27" />
                                 <label for="animals">Animals</label>
@@ -90,17 +101,18 @@
                         </fieldset>
                     </div>
                 </div>
-
-                <div class="start">
+    
+                <div class="game_start">
                     <button id="gameStartButton">Start Game</button>
                 </div>
-            </div>
-
-            <div>
-                
             </div>
         </div>
 
         <script src="./js/script.js"></script>
     </body>
 </html>
+
+<!-- <button class="answer">A</button>
+                <button class="answer">B</button>
+                <button class="answer">C</button>
+                <button class="answer">D</button> -->

@@ -2,54 +2,61 @@
     box-sizing: border-box;
 }
 
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
 fieldset {
     border: none;
 }
 
 input[type='text'], input[type='number'] {
-    width: 12rem;
     text-align: center;
 }
-#container {
+
+.container {
     display: flex;
-    justify-content: center;
     justify-self: center;
+    width: 50vw;
+    height: 75vh;
     border: 2px solid black;
-    width: 60vw;
 }
-
-.center {
-    align-self: center;
-}
-
 
 #main_menu {
     display: grid;
-    grid-template-areas: 
-    "header   header"
-    "settings settings"
-    "start    start"
-    ;
-
-    justify-items: center;
+    width: 100%;
     align-items: center;
-    justify-content: center;
-    height: 75vh;
+    justify-items: center;
+    grid-template-areas:
+        "game_header game_header"
+        "player      settings"
+        "player      settings"
+        "game_start  game_start"
+    ;
+};
+
+.game_header {
+    grid-area: game_header;
 }
 
-.header {
-    grid-area: header;
+.player {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 15px;
+    grid-area: player;
 }
 
 .settings {
-    grid-area: settings;
     display: flex;
+    justify-content: center;
+    gap: 20px;
     flex-direction: column;
-    gap: 10px;
-    min-width: 35vw;
-    background-color: steelblue;
+    grid-area: settings;
 }
 
-.start {
-    grid-area: start;
+.game_start {
+    grid-area: game_start;
+    align-self: center;
+    justify-self: center;
 }
