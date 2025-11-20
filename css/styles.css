@@ -1,0 +1,22 @@
+#container {
+    display: flex;
+    justify-content: center;
+    align-self: center;
+}
+
+.screen {
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    justify-content: center;
+    height: 75vh;
+    width: 50vw;
+    min-width: 50vw;
+    border: 2px solid black;
+}
+
+.settings {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}

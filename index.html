@@ -1,13 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/styles.css">
-    <title>Trivia App</title>
-</head>
-<body>
-    
-    <script src="./js/script.js"></script>
-</body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="./css/styles.css" />
+        <title>Trivia App</title>
+    </head>
+    <body>
+        <div id="container">
+            <div id="main_menu" class="screen">
+                <div class="header">
+                    <p>Trivia App</p>
+                </div>
+
+                <div class="settings">
+                    <div>
+                        <label for="playerName">Name:</label>
+                        <input type="text" id="playerName" minlength="2" maxlength="20" />
+                    </div>
+
+                    <div>
+                        <label for="questionNumber">How many questions?</label>
+                        <input type="text" id="questionNumber" placeholder="Between 5 to 20 questions" />
+                    </div>
+
+                    <div>
+                        <fieldset>
+                            <legend>Select a difficulty:</legend>
+                            <div>
+                                <input type="radio" id="easy" name="difficulty" value="easy" checked />
+                                <label for="easy">Easy</label>
+                            </div>
+
+                            <div>
+                                <input type="radio" id="medium" name="difficulty" value="medium" />
+                                <label for="medium">Medium</label>
+                            </div>
+
+                            <div>
+                                <input type="radio" id="hard" name="difficulty" value="hard" />
+                                <label for="hard">Hard</label>
+                            </div>
+                        </fieldset>
+                    </div>
+
+                    <div>
+                        <fieldset>
+                            <legend>Select categories:</legend>
+                            <div>
+                                <input type="radio" id="all" name="category" value="" checked />
+                                <label for="all">All</label>
+                            </div>
+
+                            <div>
+                                <input
+                                    type="radio"
+                                    id="general_knowledge"
+                                    name="category"
+                                    value="9"
+                                />
+                                <label for="general_knowledge">General Knowledge</label>
+                            </div>
+
+                            <div>
+                                <input type="radio" id="film" name="category" value="11" />
+                                <label for="film">Film</label>
+                            </div>
+
+                            <div>
+                                <input type="radio" id="music" name="category" value="12" />
+                                <label for="music">Music</label>
+                            </div>
+
+                            <div>
+                                <input type="radio" id="video_games" name="category" value="15" />
+                                <label for="video_games">Video Games</label>
+                            </div>
+
+                            <div>
+                                <input type="radio" id="math" name="category" value="19" />
+                                <label for="math">Mathematics</label>
+                            </div>
+
+                            <div>
+                                <input type="radio" id="sports" name="category" value="21" />
+                                <label for="sports">Sports</label>
+                            </div>
+
+                            <div>
+                                <input type="radio" id="animals" name="category" value="27" />
+                                <label for="animals">Animals</label>
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+                
+                <div>
+                    <button>Start Game</button>
+                </div>
+            </div>
+        </div>
+
+        <script src="./js/script.js"></script>
+    </body>
 </html>
