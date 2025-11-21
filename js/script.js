@@ -1,11 +1,19 @@
 const baseURL = 'https://opentdb.com/api.php?';
 let gameData = null;
 
+// Containers
+let mainScreen = document.getElementById('main_container');
+let loaderScreen = document.getElementById('loader_container');
+let gameScreen = document.getElementById('game_container');
+let resultsScreen = document.getElementById('results_container'); 
+
 // Main Menu
 let nameInput = document.getElementById('playerName');
 let amountInput = document.getElementById('questionAmount');
 let difficultyInput = document.getElementsByName('difficulty');
 let categoryInput = document.getElementsByName('category');
+let nameError = document.getElementById('nameError');
+let amountError = document.getElementById('amountError');
 let startButton = document.getElementById('gameStartButton');
 
 // Game Screen
@@ -20,15 +28,62 @@ let playerScore = 0;
 let progressValue = 0;
 let testButton = document.getElementById('test_button');
 
-let fetchInterval = setInterval(() => {
-    if (gameData === null) return;
-
-    else {
-        clearInterval(fetchInterval);
-        console.log(gameData);
-        loadNextQuestion();
+startButton.addEventListener('click', () => {
+    if(nameInput.value.length < 2 || nameInput.value.length > 20) {
+        nameInput.style.border = '2px solid crimson';
+        nameError.classList.remove('hide')
+        return;
     }
-}, 1000);
+
+    if(amountInput.value < 5 || amountInput.value > 20) {
+        amountInput.style.border = '2px solid crimson';
+        amountError.classList.remove('hide');
+        return;
+    } 
+
+    let gameConfig = {
+        name: nameInput.value,
+        amount: amountInput.value,
+        score: 0
+    };
+
+    for (let i = 0; i < difficultyInput.length; i++)
+        if (difficultyInput[i].checked) {
+            gameConfig.difficulty = difficultyInput[i].value;
+            break;
+        }
+
+    for (let i = 0; i < categoryInput.length; i++) {
+        if (categoryInput[i].checked) {
+            gameConfig.category = categoryInput[i].value;
+            break;
+        }
+    }
+
+    console.log('Fetching...');
+
+    fetchQuestions(gameConfig)
+        .then(response => response.json())
+        .then(data => gameData = data.results);
+
+    console.log('Config sent:');
+    console.log(gameConfig);
+
+    mainScreen.classList.add('hide');
+    loaderScreen.classList.remove('hide');
+
+    // Wait until fetch is done.
+    let fetchInterval = setInterval(() => {
+        if (gameData === null) console.log('waiting...');
+    
+        else {
+            clearInterval(fetchInterval);
+            loaderScreen.classList.add('hide');
+            gameScreen.classList.remove('hide');
+            loadNextQuestion();
+        }
+    }, 1000);
+});
 
 let fetchQuestions = (gameConfig) => {
     let questionURL = baseURL
@@ -86,6 +141,8 @@ let loadNextQuestion = () => {
 
     resetTimer();
 
+    console.log(gameData);
+
     let currentQuestion = gameData.shift();
     let answers = shuffleAnswers([...currentQuestion.incorrect_answers, currentQuestion.correct_answer]);
     questionText.innerText = currentQuestion.question;
@@ -137,34 +194,22 @@ let loadNextQuestion = () => {
     }
 }
 
+// testButton.addEventListener('click', () => {
+//     const URL = 'https://opentdb.com/api.php?amount=5&difficulty=medium&type=multiple&category=15';
+//     fetch(URL)
+//         .then(response => response.json())
+//         .then(data => gameData = data.results);
+// });
 
-startButton.addEventListener('click', () => {
-    let gameConfig = {
-        name: nameInput.value,
-        amount: amountInput.value,
-        score: 0
-    };
-
-    for (let i = 0; i < difficultyInput.length; i++)
-        if (difficultyInput[i].checked) {
-            gameConfig.difficulty = difficultyInput[i].value;
-            break;
-        }
-
-    for (let i = 0; i < categoryInput.length; i++) {
-        if (categoryInput[i].checked) {
-            gameConfig.category = categoryInput[i].value;
-            break;
-        }
-    }
-
-    fetchQuestions(gameConfig);
-
-});
-
-testButton.addEventListener('click', () => {
-    const URL = 'https://opentdb.com/api.php?amount=5&difficulty=medium&type=multiple&category=15';
-    fetch(URL)
-        .then(response => response.json())
-        .then(data => gameData = data.results);
-});
+// let fetchInterval = setInterval(() => {
+    //     if (gameData === null) {
+    //         mainScreen.classList.add('hide');
+    //         loaderScreen.classList.remove('hide');
+    //     }
+    
+    //     else {
+    //         clearInterval(fetchInterval);
+    //         console.log(gameData);
+    //         loadNextQuestion();
+    //     }
+    // }, 1000);

@@ -2,12 +2,12 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="./css/styles.css" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" href="./css/styles.css"/>
         <title>Trivia App</title>
     </head>
     <body>
-        <div id="main_container" class="container hide">
+        <div id="main_container" class="container">
             <div id="main_menu">
                 <div class="game_header">
                     <p>Trivia</p>
@@ -23,6 +23,7 @@
                         maxlength="20"
                         value="Eddie"
                     />
+                    <p id='nameError' class="error_text hide">Enter a name between 2 and 20 characters.</p>
     
                     <label for="questionAmount">How many questions?</label>
                     <input
@@ -32,6 +33,7 @@
                         placeholder="Between 5 to 20 questions"
                         value="5"
                     />
+                    <p id='amountError' class="error_text hide">You must choose between 5 to 20 questions.</p>
                 </div>
     
                 <div class="settings">
@@ -108,7 +110,7 @@
         </div>
 
         <!-- <button id="test_button">Test</button> -->
-        <div class="loader_container">
+        <div id="loader_container" class="loader_container hide">
             <div class="loader">*</div>
         </div>
 

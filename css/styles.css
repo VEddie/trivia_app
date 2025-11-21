@@ -49,10 +49,6 @@ button:hover {
     padding: 20px;
 }
 
-.hide {
-    display: none;
-}
-
 /* Main Menu Styling */
 
 #main_menu {
@@ -214,4 +210,17 @@ button:hover {
     flex-direction: column;
     align-self: center;
     gap: 10px;
+}
+
+/* Extra */
+.error_text {
+    font-style: italic;
+    color: #FAEBEF;
+    margin: 0;
+    width: 200px;
+    font-size: 16px;
+}
+
+.hide {
+    display: none;
 }
