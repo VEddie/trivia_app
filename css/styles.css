@@ -124,8 +124,10 @@ button:hover {
 
 .timer_circle {
     padding: 25px;
+    width: 75px;
     border: 2px solid #FAEBEF;
     border-radius: 50%;
+    text-align: center;
 }
 
 .score {

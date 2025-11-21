@@ -42,7 +42,26 @@ startButton.addEventListener('click', () => {
     
     fetchQuestions(gameConfig);
     
-})
+});
+
+let timerParagraph = document.querySelector('.timer_circle');
+let timeRemaining = 3;
+
+let timerInterval = setInterval(() => {
+    if(timeRemaining === 0) {
+        clearInterval(timerInterval);
+        timeRemaining = 20;
+        timerParagraph.style.backgroundColor = '';
+        timerParagraph.innerText = timeRemaining;
+        return;
+    }
+
+    timeRemaining--;
+    timerParagraph.innerText = timeRemaining;
+
+    if(timeRemaining <= 5) 
+        timerParagraph.style.backgroundColor = 'crimson';
+}, 1000)
 
 // API URL:?amount=val&category=val&difficulty=(easy|medium|hard)&type=multiple
 
