@@ -15,6 +15,7 @@ let questionOptions = document.getElementsByClassName('answer');
 let timerParagraph = document.querySelector('.timer_circle');
 let timeRemaining = 20;
 let progressBar = document.querySelector('.progress_bar');
+let scoreParagraph = document.querySelector('.score');
 let playerScore = 0;
 let progressValue = 0;
 let testButton = document.getElementById('test_button');
@@ -42,6 +43,9 @@ let fetchQuestions = (gameConfig) => {
 };
 
 let resetTimer = () => {
+    timeRemaining = 20;
+    timerParagraph.innerText = timeRemaining;
+
     timerInterval = setInterval(() => {
         if (timeRemaining === 0) {
             clearInterval(timerInterval);
@@ -72,7 +76,7 @@ let shuffleAnswers = (arr) => {
     return shuffled;
 };
 
-let resetOptionBackgrounds = () => {
+let resetAnswerBackgrounds = () => {
     for(let i = 0; i < questionOptions.length; i++)
         questionOptions[i].style.backgroundColor = '';
 }
@@ -91,30 +95,44 @@ let loadNextQuestion = () => {
 
     console.log(`Correct answer: ${currentQuestion.correct_answer}`);
 
-    setTimeout(() => {
+    let answerTimeout = setTimeout(() => {
         loadNextQuestion();
     }, 21000);
 
     for(let i = 0; i < answers.length; i++) {
         questionOptions[i].innerText = answers[i];
-        questionOptions[i].addEventListener('click', (event) => {
-            if(event.target.innerText === currentQuestion.correct_answer) 
+        questionOptions[i].addEventListener('click', function answerHandler (event) {
+            console.log('click');
+
+            if(event.target.innerText === currentQuestion.correct_answer) {
                 questionOptions[i].style.backgroundColor = '#54AE4A';
+                playerScore += 10;
+                scoreParagraph.innerText = `Score: ${playerScore}`;
+            }
             
             else {
+                console.log('inside else');
                 questionOptions[i].style.backgroundColor = 'crimson';
-                [... questionOptions]
-                    .filter(option => option.innerText === currentQuestion.correct_answer)
-                    .shift()
-                    .style.backgroundColor = '#54AE4A';
 
-                clearInterval(timerInterval)
+                [... questionOptions]
+                    .filter(option => option.innerText === currentQuestion.correct_answer)[0]
+                    .style.backgroundColor = '#54AE4A';
             }
 
+            clearInterval(timerInterval);
+            clearTimeout(answerTimeout);
+
+            for(let j = 0; j < questionOptions.length; j++) {
+                questionOptions[j].removeEventListener('click', answerHandler);
+            }
+                
+
             setTimeout(() => {
-                console.log('loading next question...')
-            }, 2000)
-            
+                console.log('loading next question...');
+                resetAnswerBackgrounds();
+                loadNextQuestion();
+            }, 300000)
+
         });
     }
 }

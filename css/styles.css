@@ -99,6 +99,33 @@ button:hover {
     text-align: center;
 }
 
+/* Spinner */
+
+.loader_container {
+    display: flex;
+    justify-self: center;
+    align-items: center;
+    justify-content: center;
+    width: 80vw;
+    height: 85vh;
+    border: 2px solid #FAEBEF;
+    padding: 20px;
+}
+
+.loader {
+    border: 8px solid #FAEBEF; 
+    border-top: 8px solid #54AE4A; 
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
 /* Game Screen */
 #game_screen {
     display: grid;
