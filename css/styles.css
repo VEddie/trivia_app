@@ -46,6 +46,7 @@ button:hover {
     width: 75vw;
     height: 85vh;
     border: 2px solid #FAEBEF;
+    padding: 20px;
 }
 
 .hide {
@@ -101,7 +102,7 @@ button:hover {
 /* Game Screen */
 #game_screen {
     display: grid;
-    align-items: center;
+    align-content: center;
     justify-content: center;
     grid-template-columns: 80fr 20fr;
     grid-template-areas:
@@ -142,4 +143,31 @@ button:hover {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 25px;
+}
+
+/* Results Screen */
+#results_screen {
+    display: grid;
+    align-content: center;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "performance player_choice";
+    width: 100%;
+    text-align: center;
+    gap: 20px;
+}
+
+.performance {
+    grid-area: performance;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border: 2px solid #FAEBEF;
+}
+
+.player_choice {
+    grid-area: player_choice;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    gap: 10px;
 }
