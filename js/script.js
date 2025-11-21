@@ -9,11 +9,13 @@ let categoryInput = document.getElementsByName('category');
 let startButton = document.getElementById('gameStartButton');
 
 // Game Screen
+let timerInterval = null;
 let questionText = document.querySelector('.question_text');
 let questionOptions = document.getElementsByClassName('answer');
 let timerParagraph = document.querySelector('.timer_circle');
 let timeRemaining = 20;
 let progressBar = document.querySelector('.progress_bar');
+let playerScore = 0;
 let progressValue = 0;
 let testButton = document.getElementById('test_button');
 
@@ -31,7 +33,7 @@ let fetchQuestions = (gameConfig) => {
     let questionURL = baseURL
         + `amount=${gameConfig.amount}&`
         + `difficulty=${gameConfig.difficulty}&`
-        + `type=multiple`;
+        + `type=multiple`
 
     if (gameConfig.category)
         questionURL += `&category=${gameConfig.category}`
@@ -40,7 +42,7 @@ let fetchQuestions = (gameConfig) => {
 };
 
 let resetTimer = () => {
-    let timerInterval = setInterval(() => {
+    timerInterval = setInterval(() => {
         if (timeRemaining === 0) {
             clearInterval(timerInterval);
             timeRemaining = 20;
@@ -68,6 +70,11 @@ let shuffleAnswers = (arr) => {
     }
 
     return shuffled;
+};
+
+let resetOptionBackgrounds = () => {
+    for(let i = 0; i < questionOptions.length; i++)
+        questionOptions[i].style.backgroundColor = '';
 }
 
 let loadNextQuestion = () => {
@@ -79,16 +86,37 @@ let loadNextQuestion = () => {
     let answers = shuffleAnswers([...currentQuestion.incorrect_answers, currentQuestion.correct_answer]);
     questionText.innerText = currentQuestion.question;
 
-    for(let i = 0; i < answers.length; i++)
-        questionOptions[i].innerText = answers[i];
-
     progressValue += (1/questionAmount.value) * 100
     progressBar.style.width = progressValue + '%';
 
-    let answerTimeout = setTimeout(() => {
-        clearTimeout(answerTimeout);
+    console.log(`Correct answer: ${currentQuestion.correct_answer}`);
+
+    setTimeout(() => {
         loadNextQuestion();
     }, 21000);
+
+    for(let i = 0; i < answers.length; i++) {
+        questionOptions[i].innerText = answers[i];
+        questionOptions[i].addEventListener('click', (event) => {
+            if(event.target.innerText === currentQuestion.correct_answer) 
+                questionOptions[i].style.backgroundColor = '#54AE4A';
+            
+            else {
+                questionOptions[i].style.backgroundColor = 'crimson';
+                [... questionOptions]
+                    .filter(option => option.innerText === currentQuestion.correct_answer)
+                    .shift()
+                    .style.backgroundColor = '#54AE4A';
+
+                clearInterval(timerInterval)
+            }
+
+            setTimeout(() => {
+                console.log('loading next question...')
+            }, 2000)
+            
+        });
+    }
 }
 
 
