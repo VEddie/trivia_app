@@ -6,6 +6,7 @@
 
 body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1.2em;
     background-color: #333D79;
     color: #FAEBEF;
 }
@@ -17,6 +18,9 @@ fieldset {
 input[type='text'], input[type='number'] {
     height: 2rem;
     text-align: center;
+    border-radius: 20px;
+    color:#333D79;
+    border: 2px solid #FAEBEF;
 }
 
 button {
@@ -25,7 +29,7 @@ button {
     border: 2px solid #FAEBEF;
     border-radius: 20px;
     padding: 25px;
-    font-size: 1.5rem;
+    font-size: 1.5em;
     cursor: pointer;
 }
 
@@ -39,9 +43,13 @@ button:hover {
 .container {
     display: flex;
     justify-self: center;
-    width: 50vw;
-    height: 75vh;
+    width: 75vw;
+    height: 85vh;
     border: 2px solid #FAEBEF;
+}
+
+.hide {
+    display: none;
 }
 
 /* Main Menu Styling */
@@ -52,7 +60,6 @@ button:hover {
     align-items: center;
     justify-items: center;
     justify-content: stretch;
-    grid-auto-rows: minmax(100px, auto);
     grid-template-areas:
         "game_header game_header"
         "player      settings"
@@ -63,13 +70,10 @@ button:hover {
 
 .game_header {
     grid-area: game_header;
-    font-size: 3.5rem;
-    width: 100%;
-    height: 100%;
+    font-size: 3.5em;
     font-weight: bold;
     align-content: center;
     text-align: center;
-    border-bottom: 2px solid #FAEBEF;
 }
 
 .player {
@@ -90,9 +94,50 @@ button:hover {
 
 .game_start {
     grid-area: game_start;
-    width: 100%;
-    height: 100%;
     align-content: center;
     text-align: center;
-    border-top: 2px solid #FAEBEF;
+}
+
+/* Game Screen */
+#game_screen {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    grid-template-columns: 80fr 20fr;
+    grid-template-areas:
+        "question timer"
+        "question score"
+        "options options"
+        "options options"
+}
+
+.question_text {
+    grid-area: question;
+}
+
+.timer {
+    grid-area: timer;
+    display: flex;
+    justify-self: center;
+    align-self: center;
+}
+
+.timer_circle {
+    padding: 25px;
+    border: 2px solid #FAEBEF;
+    border-radius: 50%;
+}
+
+.score {
+    grid-area: score;
+    display: flex;
+    justify-self: center;
+    align-self: center;
+}
+
+.options {
+    grid-area: options;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
 }
