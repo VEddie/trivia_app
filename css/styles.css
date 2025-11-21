@@ -102,18 +102,32 @@ button:hover {
 /* Game Screen */
 #game_screen {
     display: grid;
-    align-content: center;
     justify-content: center;
     grid-template-columns: 80fr 20fr;
     grid-template-areas:
         "question timer"
-        "question score"
+        "progress_bar score"
         "options options"
         "options options"
 }
 
 .question_text {
     grid-area: question;
+}
+
+.progress_container {
+    grid-area: progress_bar;
+    align-self: center;
+    justify-self: center;
+    width: 80%;
+    border: 2px solid #FAEBEF;
+}
+
+.progress_bar {
+    width: 30%;
+    color: transparent;
+    background-color: #54AE4A; 
+    
 }
 
 .timer {
@@ -146,6 +160,7 @@ button:hover {
 }
 
 /* Results Screen */
+
 #results_screen {
     display: grid;
     align-content: center;

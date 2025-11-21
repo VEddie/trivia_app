@@ -45,7 +45,7 @@ startButton.addEventListener('click', () => {
 });
 
 let timerParagraph = document.querySelector('.timer_circle');
-let timeRemaining = 3;
+let timeRemaining = 20;
 
 let timerInterval = setInterval(() => {
     if(timeRemaining === 0) {
