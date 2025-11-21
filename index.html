@@ -7,7 +7,7 @@
         <title>Trivia App</title>
     </head>
     <body>
-        <div class="container hide">
+        <div id="main_container" class="container hide">
             <div id="main_menu">
                 <div class="game_header">
                     <p>Trivia</p>
@@ -30,7 +30,7 @@
                         id="questionAmount"
                         class="center"
                         placeholder="Between 5 to 20 questions"
-                        value="15"
+                        value="5"
                     />
                 </div>
     
@@ -107,7 +107,9 @@
             </div>
         </div>
 
-        <div class="container">
+        <button id="test_button">Test</button>
+
+        <div id="game_container" class="container">
             <div id="game_screen">
                 <div class="question_text">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero quibusdam reiciendis quae, neque quis eius minus dicta corrupti quasi ab dolorem impedit deserunt distinctio voluptatem excepturi maiores
@@ -134,7 +136,7 @@
             </div>
         </div>
 
-        <div class="container hide">
+        <div id="results_container" class="container hide">
             <div id="results_screen">
                 <div class="performance">
                     <p id="result_name">Name: Eddie</p>

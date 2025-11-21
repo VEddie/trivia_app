@@ -43,7 +43,7 @@ button:hover {
 .container {
     display: flex;
     justify-self: center;
-    width: 75vw;
+    width: 80vw;
     height: 85vh;
     border: 2px solid #FAEBEF;
     padding: 20px;
@@ -102,6 +102,8 @@ button:hover {
 /* Game Screen */
 #game_screen {
     display: grid;
+    height: 100%;
+    width: 100%;
     justify-content: center;
     grid-template-columns: 80fr 20fr;
     grid-template-areas:
@@ -124,7 +126,7 @@ button:hover {
 }
 
 .progress_bar {
-    width: 30%;
+    width: 0%;
     color: transparent;
     background-color: #54AE4A; 
     
